@@ -1,5 +1,8 @@
 <script>
  let user= "ur mum"
+ function handleLogout() {
+    user = null;  
+ }
 </script>
 
 <style>
@@ -80,29 +83,80 @@
   .tab:hover {
   background-color: #ffd102; /* Change the hover background color as desired */
   }
-
-  /*QUESTIONS LIST CONTAINER*/
-  .container {
-  background-color: #333; 
-  color: white;
-  flex: 1;  
-  padding: 100px;  
-  margin-top: -876px; /* Adjust margin-top to change the vertical position */
-  margin-left: 200px; /* Adjust margin-left to change the horizontal position */
-  margin-right: 200px;
-  height:42.25em;
-  width:93em;
-}
-
-  /*LOG OUT BUTTON*/
-  .logout-button {
+/*LOG OUT BUTTON*/
+.logout-button {
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
     color: #000;
     padding: 5px 10px;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
   }
+
+/*QUESTIONS LIST CONTAINER*/
+.container {
+  background-color: #333; 
+  color: white;
+  padding: 100px;
+  margin-top: -876px;
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 42.25em;
+  width: 93em;
+  display: flex;          /* Use Flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the start of the container */
+}
+
+
+  /*THE QUESTIONS CONTAINERS*/
+  /* Style for the question containers */
+.question-container {
+  background-color: #535252; /* Light grey background */
+  margin-bottom: 10px; /* Spacing between question containers */
+  padding: 10px;
+  width: 80em;
+  height: 5em;
+  border-radius:15px;
+}
+
+/* Style for question text */
+.question-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+
+/* Style for DELETE and EDIT buttons */
+.buttons {
+  display: flex;
+}
+
+/* Style for the delete and edit buttons */
+.delete-button,
+.edit-button {
+  color: #fff; 
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background: transparent; 
+  margin-right: -10px;
+}
+
+
+.delete-button::before,
+.edit-button::before {
+  content: " | "; 
+}
+
+
+.delete-button:first-of-type::before,
+.edit-button:first-of-type::before {
+  content: ""; 
+}
+
+
   </style>
   
   <!-- LOGO MANAGEMENT -->
@@ -118,13 +172,14 @@
   </div>
   
 
-  <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS -->
-  <div class="bottom-bar">
-    <span>
-      ADMIN: {user}  
-    </span>
+  <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
+<div class="bottom-bar">
+  <span>ADMIN: {user}</span>
+  <a href="http://localhost:5173">  
     <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
-  </div>
+  </a>
+</div>
+
 
   <!-- FOR THE TABS -->
   <div class="sidebar">
@@ -136,11 +191,37 @@
     <div class="tab"><span>TEST</span></div>
   </div>
 
+
  <!--this is a lowkey bad way to fill in the white space lmao-->
   <div class="additional-content"> </div>
 
    <!--QUESTIONS LIST CONTAINER-->
    <div class="container">
+    <div class="qcontainer">
+      <!-- First questions container -->
+      <div class="question-container">
+        <div class="question-text">
+          <!-- Question content here -->
+        Q1. Example_01?
+        </div>
+        <div class="buttons">
+          <button class="delete-button">DELETE</button>
+          <button class="edit-button">EDIT</button>
+        </div>
+      </div>
+    
+      <!-- Second questions container -->
+      <div class="question-container">
+        <div class="question-text">
+          <!-- Question content here -->
+          Q2. Example_02?
+        </div>
+        <div class="buttons">
+          <button class="delete-button">DELETE</button>
+          <button class="edit-button">EDIT</button>
+        </div>
+      </div>
+      </div>
     </div>
   
  
