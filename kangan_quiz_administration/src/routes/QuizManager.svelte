@@ -6,16 +6,12 @@
 </script>
 
 <style>
-  /*MAIN PAGE BACKGROUND*/
-  body {
-    background-color: #333;
-  }
-
-  /*CONTAINER WITH A SCROLL BAR*/
-  .questions-container {
-    overflow-y: scroll;
-    max-height: 400px; /* Adjust the maximum height as needed */
-    background-color: #333;
+  /*HEADER*/  
+  .manage-questions {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    margin-bottom: 15px;
+    margin-top: -30px;
   }
 
   /*TOP BAR*/
@@ -124,7 +120,7 @@
 /* Style for question text */
 .question-text {
   font-family: 'Roboto', sans-serif;
-  font-size: 40px;
+  font-size: 35px;
   margin-bottom: 5px;
 }
 
@@ -156,6 +152,30 @@
   content: ""; 
 }
 
+/* Add button styles */
+.add-button {
+  position: fixed;
+  bottom: 40px;  
+  right: 40px;  
+}
+
+.sticky-add-button {
+  background-color: rgb(254, 254, 254);  
+  color: #000000; 
+  padding: 10px 20px; 
+  border: none;  
+  border-radius: 5px;  
+  cursor: pointer;
+  height: 3.5em;
+  width: 9em;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sticky-add-button:hover {
+  background-color: #000000;  
+  color:#ffffff; 
+  }
 
   </style>
   
@@ -197,34 +217,60 @@
 
    <!--QUESTIONS LIST CONTAINER-->
    <div class="container">
-    <div class="qcontainer">
-      <!-- First questions container -->
-      <div class="question-container">
-        <div class="question-text">
-          <!-- Question content here -->
-        Q1. Example_01?
-        </div>
-        <div class="buttons">
-          <button class="delete-button">DELETE</button>
-          <button class="edit-button">EDIT</button>
-        </div>
-      </div>
-    
-      <!-- Second questions container -->
-      <div class="question-container">
-        <div class="question-text">
-          <!-- Question content here -->
-          Q2. Example_02?
-        </div>
-        <div class="buttons">
-          <button class="delete-button">DELETE</button>
-          <button class="edit-button">EDIT</button>
-        </div>
-      </div>
-      </div>
+    <div class="manage-questions">
+      <h> MANAGE QUESTIONS</h>
     </div>
+      <div class="qcontainer">
+      <!-- First questions container -->
+        <div class="question-container">
+        <div class="question-text">
+      <!-- Question content here -->
+        Q.1 Example_01?
+        </div>
+        <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+        </div>
+        </div>      
+     <!-- Second questions container -->
+        <div class="question-container">
+        <div class="question-text">
+      <!-- Question content here -->
+        Q.2 Example_02?
+        </div>
+        <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+        </div>
+        </div>
+      <!-- First questions container -->
+        <div class="question-container">
+        <div class="question-text">
+      <!-- Question content here -->
+        Q.3
+        </div>
+        <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+        </div>
+        </div>
+      <!-- First questions container -->
+        <div class="question-container">
+        <div class="question-text">
+      <!-- Question content here -->
+        Q.4
+        </div>
+        <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+        </div>
+        </div>
+        </div>
+        </div>
   
- 
+          <div class="add-button">
+      <button class="sticky-add-button">ADD</button>
+    </div>
   
 
 

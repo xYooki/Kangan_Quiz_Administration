@@ -73,8 +73,9 @@ onMount(() => {
     cursor: pointer;
     margin-left: 62%;
     border-radius: 10px; 
-    height: 3.5em;
-    width: 12em;
+    height: 3em;
+    width: 10em;
+    font-size:15px;
   }
 
   .logo {
