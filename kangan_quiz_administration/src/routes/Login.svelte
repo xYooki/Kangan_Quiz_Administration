@@ -20,15 +20,13 @@ onMount(() => {
   document.head.appendChild(link);
 });
 </script>
-
+ 
 <style>
-.loginHandler {
-  background-color: #000; /* Black background */
-  color: #fff; /* White text color */
-  border: none;
-  cursor: pointer;
+  html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #333;
 }
-
 
   /* Style for the background image covering the page */
   .background-image {
@@ -57,22 +55,26 @@ onMount(() => {
   .right-content {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    width: 50%; /* Set the width to 50% to fill the right half of the page */
+    justify-content: center; 
+    align-items: center;  
+    width: 50%;  
     height: 100%;
-    background-color: #ffd102; /* Background color with opacity */
+    background-color: #ffca1b;  
     color: white;
+    margin-top: -1em
   }
 
   /* Style for the "LOGIN" button */
   .loginHandler {
+    font-family: 'Roboto', sans-serif;
     background-color: #000;
     color: #fff;
     border: none;
     cursor: pointer;
-    /* Adjust the margin-left as needed */
-    margin-left: 70%;
+    margin-left: 62%;
+    border-radius: 10px; 
+    height: 3.5em;
+    width: 12em;
   }
 
   .logo {
@@ -85,9 +87,10 @@ onMount(() => {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     margin-bottom: 10px;  
-    margin-right: 50%;
+    margin-right: 65%;
     display: block;  
     color: #000000;
+    font-size: 1.5em; 
   }
 
   .login-form-container {
@@ -99,7 +102,19 @@ onMount(() => {
   /* Style for the input field */
   .input-field {
     margin-bottom: 10px;
+    font-size:5;
   }
+
+  /* Style for the rounded input box with no borders */
+.rounded-input {
+  border: none;  
+  border-radius: 10px;  
+  padding: 10px;  
+  background-color: #f2f2f2; 
+  width: 30em;
+  height: 4em;
+}
+
 
 </style>
 
@@ -118,8 +133,9 @@ onMount(() => {
     <div class="login-form-container">
       <label class="username-label" for="username">USERNAME:</label>
       <div class="input-field">
-        <input type="text" id="username" name="username" placeholder="Enter your username" />
+        <input type="text" id="username" name="username" placeholder="Enter your username" class="rounded-input">
       </div>
+      <button class="loginHandler" on:click={(e) => loginHandler(true)}>LOG IN</button>
     </div>
   </div>
 </div>
