@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Kangan_Quiz_Project.props" />
+</Project>
