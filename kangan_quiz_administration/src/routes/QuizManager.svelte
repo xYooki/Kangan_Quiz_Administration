@@ -1,5 +1,5 @@
 <script>
- let user= "ur mum"
+ let user= "Admin_01"
  function handleLogout() {
     user = null;  
  }
@@ -11,7 +11,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     margin-bottom: 15px;
-    margin-top: -30px;
+    margin-top: -50px;
   }
 
   /*TOP BAR*/
@@ -28,6 +28,7 @@
 
   /*TOP BAR_02*/
   .bottom-bar {
+    font-family: 'Roboto', sans-serif;
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
@@ -110,7 +111,7 @@
   /* Style for the question containers */
 .question-container {
   background-color: #535252; /* Light grey background */
-  margin-bottom: 10px; /* Spacing between question containers */
+  margin-bottom: 30px; /* Spacing between question containers */
   padding: 10px;
   width: 80em;
   height: 5em;
@@ -120,13 +121,15 @@
 /* Style for question text */
 .question-text {
   font-family: 'Roboto', sans-serif;
-  font-size: 35px;
-  margin-bottom: 5px;
+  font-size: 30px;
+  margin-top: 16px;
+  margin-bottom: -5px;
 }
 
 /* Style for DELETE and EDIT buttons */
 .buttons {
   display: flex;
+  margin-right: 10em;
 }
 
 /* Style for the delete and edit buttons */
@@ -134,12 +137,13 @@
 .edit-button {
   color: #fff; 
   border: none;
-  padding: 10px;
+  padding: 90px;
   cursor: pointer;
   background: transparent; 
-  margin-right: -10px;
+  margin-right: -93em;
+  margin-left: 80em;
+  margin-top: -3em;
 }
-
 
 .delete-button::before,
 .edit-button::before {
@@ -164,10 +168,10 @@
   color: #000000; 
   padding: 10px 20px; 
   border: none;  
-  border-radius: 5px;  
+  border-radius: 15px;  
   cursor: pointer;
-  height: 3.5em;
-  width: 9em;
+  height: 3em;
+  width: 8em;
   font-size: 25px;
   font-family: 'Roboto', sans-serif;
 }
@@ -243,7 +247,7 @@
         <button class="edit-button">EDIT</button>
         </div>
         </div>
-      <!-- First questions container -->
+      <!-- Third questions container -->
         <div class="question-container">
         <div class="question-text">
       <!-- Question content here -->
@@ -254,11 +258,22 @@
         <button class="edit-button">EDIT</button>
         </div>
         </div>
-      <!-- First questions container -->
+      <!-- Fourth questions container -->
         <div class="question-container">
         <div class="question-text">
       <!-- Question content here -->
         Q.4
+        </div>
+        <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+        </div>
+        </div>
+       <!-- fifth questions container -->
+        <div class="question-container">
+        <div class="question-text">
+       <!-- Question content here -->
+         Q.5
         </div>
         <div class="buttons">
         <button class="delete-button">DELETE</button>

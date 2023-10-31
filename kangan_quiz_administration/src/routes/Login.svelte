@@ -1,24 +1,45 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { onMount } from 'svelte';
 
   let dispatch = createEventDispatcher();
-  
-   function loginHandler(status) {
-    console.log(status);
-    dispatch('loginEvent', {
-      login: status
-    });
-  }
+  let username = "";
+  let loginStatus = "";
 
-   import { onMount } from 'svelte';
-   
-// Load the Roboto font on component mount
-onMount(() => {
-  const link = document.createElement('link');
-  link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
-});
+  // Load the Roboto font on component mount
+  onMount(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  });
+
+  async function handleLogin() {
+    try {
+      const response = await fetch("/api/checkUser", { //api link goes hereee whenever its ready
+        method: "POST", // Or "GET" depending on your API endpoint
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          loginStatus = "Login successful";
+          dispatch('loginEvent', { login: true });
+        } else {
+          loginStatus = "Login failed";
+        }
+      } else {
+        loginStatus = "Login failed";
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      loginStatus = "An error occurred";
+    }
+  }
 </script>
  
 <style>
