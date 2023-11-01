@@ -3,24 +3,25 @@
   import QuizManager from "./QuizManager.svelte";
   import AddQuestions from './addQuestions.svelte';
   let login = false;
+  let view = 'login'; // possible values: 'login', 'quizManager', 'addQuestions'
 
   function setLogin(event) {
     console.log(event.detail);
     login = event.detail.login;
+    if (login) view = 'quizManager';
   }
 
+  function showAddQuestions() {
+    view = 'addQuestions';
+  }
 </script>
 
-<AddQuestions />
-
-<div>
-  {#if !login}
-   <Login on:loginEvent={setLogin} />
-
-  {:else}
-
-    <QuizManager />
-  {/if}
-</div>
+{#if view === 'addQuestions'}
+  <AddQuestions />
+{:else if view === 'login'}
+  <Login on:loginEvent={setLogin} />
+{:else}
+  <QuizManager on:addQuestions={showAddQuestions} />
+{/if}
 
   
