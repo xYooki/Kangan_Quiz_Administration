@@ -1,9 +1,18 @@
 <script>
+
+  import { goto } from '$app/navigation';
+
+  function openAddQuestions() {
+    goto('/addQuestions');
+  }
+
  let user= "Admin_01"
  function handleLogout() {
     user = null;  
  }
 </script>
+
+<button class="add-button" on:click={openAddQuestions}>Add Questions</button>
 
 <style>
   /*HEADER*/  
