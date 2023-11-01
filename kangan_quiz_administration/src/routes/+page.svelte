@@ -1,6 +1,7 @@
 <script>
   import Login from "./Login.svelte";
   import QuizManager from "./QuizManager.svelte";
+  import AddQuestions from './addQuestions.svelte';
   let login = false;
 
   function setLogin(event) {
@@ -9,6 +10,8 @@
   }
 
 </script>
+
+<AddQuestions />
 
 <div>
   {#if !login}
