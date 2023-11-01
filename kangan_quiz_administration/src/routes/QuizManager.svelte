@@ -6,7 +6,7 @@
 
  async function fetchQuestions() {
     try {
-      const response = await fetch("API ENDPOINT HERE PLEASE");
+      const response = await fetch("https://kanganquizapi1/users.azurewebsites.net/questions");
       if (response.ok) {
         questions = await response.json();
       } else {
