@@ -3,6 +3,23 @@
  function handleLogout() {
     user = null;  
  }
+
+ async function fetchQuestions() {
+    try {
+      const response = await fetch("API ENDPOINT HERE PLEASE");
+      if (response.ok) {
+        questions = await response.json();
+      } else {
+        console.error("Failed to fetch questions");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }
+  import { onMount } from "svelte";
+  onMount(fetchQuestions);
+
+ 
 </script>
 
 <style>
@@ -220,68 +237,29 @@
   <div class="additional-content"> </div>
 
    <!--QUESTIONS LIST CONTAINER-->
-   <div class="container">
-    <div class="manage-questions">
-      <h> MANAGE QUESTIONS</h>
+<div class="container">
+  <div class="manage-questions">
+    <h>MANAGE QUESTIONS</h>
+  </div>
+
+  {#each questions as question, index (question.id)} <!-- Each question in the database SHOULD have a unique ID -->
+    <div class="question-container">
+      <div class="question-text">
+        <!-- Display the question content here -->
+        Q.{index + 1} {question.text}
+      </div>
+      <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+      </div>
     </div>
-      <div class="qcontainer">
-      <!-- First questions container -->
-        <div class="question-container">
-        <div class="question-text">
-      <!-- Question content here -->
-        Q.1 Example_01?
-        </div>
-        <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-        </div>
-        </div>      
-     <!-- Second questions container -->
-        <div class="question-container">
-        <div class="question-text">
-      <!-- Question content here -->
-        Q.2 Example_02?
-        </div>
-        <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-        </div>
-        </div>
-      <!-- Third questions container -->
-        <div class="question-container">
-        <div class="question-text">
-      <!-- Question content here -->
-        Q.3
-        </div>
-        <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-        </div>
-        </div>
-      <!-- Fourth questions container -->
-        <div class="question-container">
-        <div class="question-text">
-      <!-- Question content here -->
-        Q.4
-        </div>
-        <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-        </div>
-        </div>
-       <!-- fifth questions container -->
-        <div class="question-container">
-        <div class="question-text">
-       <!-- Question content here -->
-         Q.5
-        </div>
-        <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-        </div>
-        </div>
-        </div>
-        </div>
+  {/each}
+
+  <!-- Add new question button -->
+  <div class="add-button">
+    <button class="sticky-add-button">ADD</button>
+  </div>
+</div>
   
           <div class="add-button">
       <button class="sticky-add-button">ADD</button>
