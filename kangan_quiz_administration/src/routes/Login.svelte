@@ -22,7 +22,7 @@
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username }),
-      });
+      }); //body: will work with POST request but not GET
 
       if (response.ok) {
         const data = await response.json();
