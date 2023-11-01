@@ -46,7 +46,7 @@
 </div>
 
 <style>
-/*HEADER*/
+/*HEADER
   .manage-questions {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
@@ -54,11 +54,11 @@
     margin-top: -50px;
   }
 
-/*TOP BAR*/
+/*TOP BAR
   .top-bar {
     background-color: #ffca1b; 
     padding: 10px 20px;
-    color: #333; /* Text color for top bar */
+    color: #333; /* Text color for top bar 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +66,7 @@
     width: auto;
   }
 
-/*TOP BAR_02*/
+/*TOP BAR_02
   .bottom-bar {
     font-family: 'Roboto', sans-serif;
     background-color: #000;
@@ -75,21 +75,21 @@
     text-align: right;
   }
   
-/*LOGO SPACE*/
+/*LOGO SPACE
   .logo {
     margin-right: 10px;
     height: 6em;
     width: auto;
   }
 
-/*SIDE BAR*/
+/*SIDE BAR
   .sidebar {
     background-color: #000;
     color: #fff;
-    width: 200px; /* Adjust the width as needed */
+    width: 200px; /* Adjust the width as needed 
   }
 
-/*TABS*/
+/*TABS
   .tab {
     display: flex;
     align-items: center;  
@@ -100,14 +100,14 @@
     height: 2.5em;
   }
 
-/*FILLING THE SPACE UNDER THE TABS*/
+/*FILLING THE SPACE UNDER THE TABS
   .additional-content {
     background-color: #000000; 
     color: white;
     flex: 1;  
     padding: 10px;  
-    margin-top: 0px; /* Adjust margin-top to change the vertical position */
-    margin-left: 00px; /* Adjust margin-left to change the horizontal position */
+    margin-top: 0px; /* Adjust margin-top to change the vertical position 
+    margin-left: 00px; /* Adjust margin-left to change the horizontal position
     margin-right: 200px;
     height:31em;
     width:180px;
@@ -117,9 +117,9 @@
     flex: 1;
   }
   .tab:hover {
-  background-color: #ffd102; /* Change the hover background color as desired */
+  background-color: #ffd102; /* Change the hover background color as desired 
   }
-/*LOG OUT BUTTON*/
+/*LOG OUT BUTTON
   .logout-button {
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
@@ -128,7 +128,7 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
-  }
+  }*/
 
   div {
     display: flex;

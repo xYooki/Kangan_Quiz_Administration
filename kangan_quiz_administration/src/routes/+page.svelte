@@ -5,6 +5,7 @@
   let login = false;
   let view = 'login'; // possible values: 'login', 'quizManager', 'addQuestions'
 
+  // @ts-ignore
   function setLogin(event) {
     console.log(event.detail);
     login = event.detail.login;

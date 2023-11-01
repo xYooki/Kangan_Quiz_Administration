@@ -41,13 +41,13 @@
     }
   }
 </script>
- 
+
 <style>
-  html, body {
+  /*html, body {
   margin: 0;
   padding: 0;
   background-color: #333;
-}
+}*/
 
   /* Style for the background image covering the page */
   .background-image {
@@ -140,7 +140,7 @@
 
 </style>
 
-<img class="background-image" src="Kangan_Background.png" alt="Background Image" />
+<img class="background-image" src="Kangan_Background.png" alt="Background" />
 
 <div class="container">
   <div class="left-content">
