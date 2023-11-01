@@ -18,25 +18,25 @@
     <input type="text" id="question" bind:value={question} placeholder="Enter question description"/>
   
     <div>
-      <label for="answerA">A)</label>
+      <label for="answerA">A</label>
       <input type="text" id="answerA" bind:value={answerA} placeholder="Enter text"/>
       <input type="radio" name="correct" value="A" bind:group={correctAnswer} />
     </div>
   
     <div>
-      <label for="answerB">B)</label>
+      <label for="answerB">B</label>
       <input type="text" id="answerB" bind:value={answerB} placeholder="Enter text"/>
       <input type="radio" name="correct" value="B" bind:group={correctAnswer} />
     </div>
   
     <div>
-      <label for="answerC">C)</label>
+      <label for="answerC">C</label>
       <input type="text" id="answerC" bind:value={answerC} placeholder="Enter text"/>
       <input type="radio" name="correct" value="C" bind:group={correctAnswer} />
     </div>
   
     <div>
-      <label for="answerD">D)</label>
+      <label for="answerD">D</label>
       <input type="text" id="answerD" bind:value={answerD} placeholder="Enter text"/>
       <input type="radio" name="correct" value="D" bind:group={correctAnswer} />
     </div>
