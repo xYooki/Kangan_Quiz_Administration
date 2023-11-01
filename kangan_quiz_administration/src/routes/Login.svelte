@@ -17,7 +17,7 @@
   async function handleLogin() {
     try {
       const response = await fetch("https://kanganquizapi1.azurewebsites.net/users/{username}", { //api link goes hereee whenever its ready
-        method: "POST", // Or "GET" depending on your API endpoint
+        method: "GET", // Or "GET" depending on your API endpoint
         headers: {
           "Content-Type": "application/json",
         },
