@@ -1,35 +1,33 @@
 <script>
 
-  import { goto } from '$app/navigation';
+let user= "Admin_01"
+function handleLogout() {
+  // @ts-ignore
+  user = null;  
+}
 
-  function openAddQuestions() {
-    goto('/addQuestions');
-  }
-
- let user= "Admin_01"
- function handleLogout() {
-    user = null;  
- }
-
- async function fetchQuestions() {
-    try {
-      const response = await fetch("https://kanganquizapi1/users.azurewebsites.net/questions");
-      if (response.ok) {
-        questions = await response.json();
-      } else {
-        console.error("Failed to fetch questions");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
+async function fetchQuestions() {
+  try {
+    const response = await fetch("https://kanganquizapi1/users.azurewebsites.net/questions");
+    if (response.ok) {
+      questions = await response.json();
+    } else {
+      console.error("Failed to fetch questions");
     }
+  } catch (error) {
+    console.error("An error occurred:", error);
   }
-  import { onMount } from "svelte";
-  onMount(fetchQuestions);
+}
+import { onMount } from "svelte";
+onMount(fetchQuestions);
 
- 
+import { goto } from '$app/navigation';
+
+function openAddQuestions() {
+  goto('/addQuestions');
+}
+
 </script>
-
-<button class="add-button" on:click={openAddQuestions}>Add Questions</button>
 
 <style>
   /*HEADER*/  
@@ -210,17 +208,17 @@
   </style>
   
   <!-- LOGO MANAGEMENT -->
-  <div class="top-bar">
-    <div>
-      <a href="https://www.kangan.edu.au/"> 
-        <img src="Kangan_logo.png" alt="Kangan Logo" class="logo" />
-      </a>
-      <a href="https://youtu.be/oKqQCHNWP-o?si=Ub7fefgNyd2YAEah">  
-        <img src="Tafe_Logo.png" alt="Tafe Vic Logo" class="logo" />
-      </a>
-    </div>
+<div class="top-bar">
+  <div>
+    <a href="https://www.kangan.edu.au/"> 
+      <img src="Kangan_logo.png" alt="Kangan Logo" class="logo" />
+    </a>
+    <a href="https://youtu.be/oKqQCHNWP-o?si=Ub7fefgNyd2YAEah">  
+      <img src="Tafe_Logo.png" alt="Tafe Vic Logo" class="logo" />
+    </a>
   </div>
-  
+</div>
+
 
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
@@ -264,16 +262,17 @@
     </div>
   {/each}
 
-  <!-- Add new question button -->
+  
+  <!-- Add new question button-->
   <div class="add-button">
     <button class="sticky-add-button">ADD</button>
   </div>
+
+  
+<!-- Add new question button Cate's version -->
+  <button class="add-button" on:click={openAddQuestions}>Add Questions</button>
+
 </div>
-  
-          <div class="add-button">
-      <button class="sticky-add-button">ADD</button>
-    </div>
-  
 
 
  

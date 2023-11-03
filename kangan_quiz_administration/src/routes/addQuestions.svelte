@@ -1,190 +1,322 @@
 <script>
-  let question = "";
-  let answerA = "";
-  let answerB = "";
-  let answerC = "";
-  let answerD = "";
-  let correctAnswer = "";
+let user= "Admin_01"
 
-  function submitQuestion() {
-  // Insert API here - Send the question, answers, and correct answer to API.
-  console.log(question, answerA, answerB, answerC, answerD, correctAnswer);
+function handleLogout() {
+    // @ts-ignore
+    user = null;  
+}
+
+let question = "";
+let correctAnswerA = "";
+let answerB = "";
+let answerC = "";
+let answerD = "";
+
+
+async function submitQuestion() {
+// Send data to the database
+
+  try {
+    const response = await fetch('https://kanganquizapi1/users.azurewebsites.net/questions', {
+      method: 'POST',
+      body: JSON.stringify({
+        question, correctAnswerA, answerB, answerC, answerD
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    // Check if the response indicates success
+    if (response.ok) {
+      //Reset form values after successful submission
+      question = '';
+      correctAnswerA = '';
+      answerB = '';
+      answerC = '';
+      answerD = '';
+      // @ts-ignore
+      alert('Question submitted successfully!');
+    } else {
+      console.error('Failed to submit the question.');
+    }
+  } catch (error) {
+    console.error('There was an error:', error);
   }
+}
+
 </script>
 
-<div>
-  <h2>Add Question</h2>
-  <label for="question">Q:</label>
-  <input type="text" id="question" bind:value={question} placeholder="Enter question description"/>
-
-  <div>
-    <label for="answerA">A</label>
-    <input type="text" id="answerA" bind:value={answerA} placeholder="Enter text"/>
-    <input type="radio" name="correct" value="A" bind:group={correctAnswer} />
-  </div>
-
-  <div>
-    <label for="answerB">B</label>
-    <input type="text" id="answerB" bind:value={answerB} placeholder="Enter text"/>
-    <input type="radio" name="correct" value="B" bind:group={correctAnswer} />
-  </div>
-
-  <div>
-    <label for="answerC">C</label>
-    <input type="text" id="answerC" bind:value={answerC} placeholder="Enter text"/>
-    <input type="radio" name="correct" value="C" bind:group={correctAnswer} />
-  </div>
-
-  <div>
-    <label for="answerD">D</label>
-    <input type="text" id="answerD" bind:value={answerD} placeholder="Enter text"/>
-    <input type="radio" name="correct" value="D" bind:group={correctAnswer} />
-  </div>
-
-  <button on:click={submitQuestion}>Submit</button>
-
-</div>
-
 <style>
-/*HEADER
-  .manage-questions {
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    margin-bottom: 15px;
-    margin-top: -50px;
-  }
+/*html {
+    62.5% of the default font-size of 16px is 10px. This makes 1rem = 10px 
+}
 
-/*TOP BAR
-  .top-bar {
-    background-color: #ffca1b; 
-    padding: 10px 20px;
-    color: #333; /* Text color for top bar 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 8em;
-    width: auto;
-  }
+body {
+  font-size: 1.6rem;  Default font-size is 16px now 
+}*/
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
 
-/*TOP BAR_02
-  .bottom-bar {
-    font-family: 'Roboto', sans-serif;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: right;
-  }
-  
-/*LOGO SPACE
-  .logo {
-    margin-right: 10px;
-    height: 6em;
-    width: auto;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  color: #fff;
+}
 
-/*SIDE BAR
-  .sidebar {
-    background-color: #000;
-    color: #fff;
-    width: 200px; /* Adjust the width as needed 
-  }
-
-/*TABS
-  .tab {
-    display: flex;
-    align-items: center;  
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Roboto', sans-serif;
-    height: 2.5em;
-  }
-
-/*FILLING THE SPACE UNDER THE TABS
-  .additional-content {
-    background-color: #000000; 
-    color: white;
-    flex: 1;  
-    padding: 10px;  
-    margin-top: 0px; /* Adjust margin-top to change the vertical position 
-    margin-left: 00px; /* Adjust margin-left to change the horizontal position
-    margin-right: 200px;
-    height:31em;
-    width:180px;
-  }
-
-  .tab span {
-    flex: 1;
-  }
-  .tab:hover {
-  background-color: #ffd102; /* Change the hover background color as desired 
-  }
-/*LOG OUT BUTTON
-  .logout-button {
-    font-family: 'Roboto', sans-serif;
-    background-color: #fff;
-    color: #000;
-    padding: 5px 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-  }*/
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Space between child elements */
-    width: 100%;
-    max-width: 400px; /* Max width to ensure responsiveness */
-    margin: 0 auto; /* Center the content horizontally */
-    padding: 1rem;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5; /* Background color from quizManager */
-    border: 1px solid #e0e0e0; /* Border from quizManager */
-    border-radius: 4px;
-    }
-
-h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #444; /* Text color from quizManager */
+/* Responsive font sizes */
+h2.add-questions {
+  font-size: 2.4rem; /* Headings are now 24px and scalable */
 }
 
 label {
-    font-weight: bold;
-    margin-right: 0.5rem;
-    color: #555; /* Slightly lighter text color for labels */
+  font-size: 1.4rem; /* Labels are now 14px and scalable */
+}
+
+input[type="text"], .logout-button, .questionSubmit {
+  font-size: 1.6rem; /* Input text and buttons are 16px */
+}
+
+/*FLEX CONTAINER*/
+.main-flex-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* full height of the viewport */
+  width: 100%; /* full width of the viewport */
+  overflow: hidden; /* prevents scrollbars if not necessary */
+}
+
+/*HEADER*/
+.header {
+  flex-shrink: 0; /* prevents shrinking when content is added*/
+}
+
+/*TOP BAR*/
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 13vh;
+  background-color: #ffca1b; 
+  padding: 1vh 2vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/*LOGOS*/
+.logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo1 {
+  height: 14vh;
+  width: auto;
+}
+
+.logo2 {
+  height: 8vh;
+  width: auto;
+  margin-left: 2vw;
+}
+
+/*TOP BAR_02*/
+.bottom-bar {
+  position: fixed;
+  top: 13vh;
+  left: 0;
+  width: 100%;
+  height: 6vh; /* responsive height */
+  background-color: #000;
+  padding: 0 2vw; /* responsive padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10; /* ensures it's above other content */
+}
+
+/*LOG OUT BUTTON*/
+.logout-button {
+  background-color: #fff;
+  color: #000;
+  font-size: 1.5vh; /* responsive font size */
+  padding: 1vh 2vw;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin-left: 2vw;
+}
+
+.bottom-bar-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.content-container {
+  display: flex;
+  flex-grow: 1; /* takes up all available space */
+  overflow: hidden; /* prevents scrollbars if not necessary */
+  margin-top: 19vh;
+}
+
+/*SIDE BAR*/
+.sidebar {
+  background-color: #000;
+  width: 18%;
+  height: calc(100vh - 19vh); /* responsive height */
+  position: sticky;
+  top: 19vh;
+  padding: 1.25rem 0rem;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+/*TABS*/
+.tab {
+  align-items: center;
+  padding: 2vh 2vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 3em;
+}
+
+.tab span {
+  flex: 1;
+}
+.tab:hover {
+  background-color: #ffd102;
+  border-radius: 4px; 
+}
+
+/*MAIN QUESTION CONTAINER*/
+.mainQuestionContainer {
+  flex-grow: 1;
+  padding: 0.5rem 1.25rem;
+  background-color: #444444;
+  overflow-y: auto; /* adds scrollbar if content is too long */
+}
+
+label, .questionSubmit {
+  font-size: 3vh;
+  margin-right: 0.5rem;
 }
 
 input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 75vw;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-input[type="radio"] {
-    margin-left: 0.5rem;
+.questionSubmit {
+  padding: 0.5rem 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;  
+  cursor: pointer;
+  width: 8em;
+  transition: background-color 0.3s;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.questionSubmit:hover {
+  background-color: #fff;
+  color: #000
 }
 
-button:hover {
-    background-color: #0056b3;
+.questionSubmit:active {
+  background-color: #ffca1b;
 }
 
-button:active {
-    background-color: #004399;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
 </style>
+
+
+<div class="main-flex-container">
+  <!--HEADER-->
+  <div class="header">
+    <!-- TOP BAR WITH LOGOS -->
+    <div class="top-bar">
+      <div class='logos'>
+        <a href="https://www.kangan.edu.au/"> 
+          <img src="Kangan_logo.png" alt="Kangan Logo" class="logo1" />
+        </a>
+        <a href="https://youtu.be/oKqQCHNWP-o?si=Ub7fefgNyd2YAEah">  
+          <img src="Tafe_Logo.png" alt="Tafe Vic Logo" class="logo2" />
+        </a>
+      </div>
+    </div>
+
+    <!-- USERNAME AND LOGOUT BUTTON -->
+    <div class="bottom-bar">
+      <div class="bottom-bar-right">
+        <span class="user-info">ADMIN: {user}</span>
+        <a href="http://localhost:5173">
+          <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-container">
+<!-- SIDEBAR AND TABS -->
+    <div class="sidebar">
+      <div class="tab"><span>QUESTIONS</span></div>
+      <div class="tab"><span>USERS</span></div>
+      <div class="tab"><span>SETTINGS</span></div>
+      <div class="tab"><span>TEST</span></div>
+      <div class="tab"><span>TEST</span></div>
+      <div class="tab"><span>TEST</span></div>
+    </div>
+<!-- QUESTION CONTAINER -->
+    <div class="mainQuestionContainer">
+
+      <h2 class="add-questions">Add Questions</h2>
+  
+      <div class="question-container">
+        <label for="questionNumber">New Question {question}</label>
+        <input type="text" id="questionNumber" bind:value={question} placeholder="Enter new question"/>
+      </div>
+      <div class="topLineQs">
+        <div class="question-container">
+          <label for="correctAnswerA">A)</label>
+          <input type="text" id="correctAnswerA" bind:value={correctAnswerA} placeholder="Enter correct answer here"/>
+        </div>
+
+        <div class="question-container">
+          <label for="answerB">B)</label>
+          <input type="text" id="answerB" bind:value={answerB} placeholder="Enter text"/>
+        </div>
+      </div>
+
+      <div class="bottomLineQs">
+        <div class="question-container">
+          <label for="answerC">C)</label>
+          <input type="text" id="answerC" bind:value={answerC} placeholder="Enter text"/>
+        </div>
+
+        <div class="question-container">
+          <label for="answerD">D)</label>
+          <input type="text" id="answerD" bind:value={answerD} placeholder="Enter text"/>
+        </div>
+      </div>
+
+      <button class=questionSubmit on:click={submitQuestion}>Submit</button>
+    </div>
+
+  </div>
+</div>

@@ -3,13 +3,13 @@
   import QuizManager from "./QuizManager.svelte";
   import AddQuestions from './addQuestions.svelte';
   let login = false;
-  let view = 'login'; // possible values: 'login', 'quizManager', 'addQuestions'
+  let view = 'addQuestions'; // possible values: 'Login', 'QuizManager', 'addQuestions'
 
   // @ts-ignore
   function setLogin(event) {
     console.log(event.detail);
     login = event.detail.login;
-    if (login) view = 'quizManager';
+    if (login) view = 'QuizManager';
   }
 
   function showAddQuestions() {
