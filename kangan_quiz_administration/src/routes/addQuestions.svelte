@@ -71,7 +71,8 @@ html, body {
 
 /* Responsive font sizes */
 h2.add-questions {
-  font-size: 2.4rem; /* Headings are now 24px and scalable */
+  font-size: 2.4rem; /* Headings are 24px and scalable */
+  
 }
 
 label {
@@ -207,13 +208,26 @@ input[type="text"], .logout-button, .questionSubmit {
   overflow-y: auto; /* adds scrollbar if content is too long */
 }
 
+.topLineQs, .bottomLineQs {
+  display: flex;
+  justify-content: space-between; /* This will space out the child elements evenly */
+  margin-bottom: 1rem; /* Adds some space between the two lines */
+}
+
+.question-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
 label, .questionSubmit {
   font-size: 3vh;
   margin-right: 0.5rem;
 }
 
 input[type="text"] {
-  width: 75vw;
+  flex-grow: 1; /* Allows input to take up as much space as possible */
+  margin-left: 0.5rem; /* Adds space between label and input */
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border: 1px solid #ccc;
@@ -288,7 +302,7 @@ input[type="text"] {
       <h2 class="add-questions">Add Questions</h2>
   
       <div class="question-container">
-        <label for="questionNumber">New Question {question}</label>
+        <label for="questionNumber">{question}</label>
         <input type="text" id="questionNumber" bind:value={question} placeholder="Enter new question"/>
       </div>
       <div class="topLineQs">
