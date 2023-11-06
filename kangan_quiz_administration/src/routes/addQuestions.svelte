@@ -48,14 +48,8 @@ async function submitQuestion() {
 </script>
 
 <style>
-/*html {
-    62.5% of the default font-size of 16px is 10px. This makes 1rem = 10px 
-}
 
-body {
-  font-size: 1.6rem;  Default font-size is 16px now 
-}*/
-
+/* CSS RESET */
 * {
   margin: 0;
   padding: 0;
@@ -66,7 +60,7 @@ body {
 
 /* Responsive font sizes */
 h2.add-questions {
-  font-size: 2.4rem; /* Headings are 24px and scalable */
+  font-size: 2rem; /* Headings are 24px and scalable */
   margin: 2rem 0rem;
 }
 
@@ -105,7 +99,6 @@ input[type="text"], .logout-button, .questionSubmit {
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /*LOGOS*/
@@ -134,7 +127,7 @@ input[type="text"], .logout-button, .questionSubmit {
   width: 100%;
   height: 6vh; /* responsive height */
   background-color: #000;
-  padding: 0 2vw; /* responsive padding */
+  padding: 0.5vh 2vw; /* responsive padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,7 +142,7 @@ input[type="text"], .logout-button, .questionSubmit {
   padding: 1vh 2vw;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.5dvw;
   margin-left: 2vw;
 }
 
@@ -192,14 +185,14 @@ input[type="text"], .logout-button, .questionSubmit {
 }
 .tab:hover {
   background-color: #ffd102;
-  border-radius: 4px; 
+  border-radius: 1vw; 
 }
 
 /*MAIN QUESTION CONTAINER*/
 .mainQuestionContainer {
   flex-grow: 1;
   padding: 0.5rem 1.25rem;
-  background-color: #444444;
+  background-color: gray;
   overflow-y: auto; /* adds scrollbar if content is too long */
 }
 
@@ -217,14 +210,15 @@ input[type="text"], .logout-button, .questionSubmit {
 }
 
 .topLineQs .question-container, .bottomLineQs .question-container{
-  flex: 1; /* Give equal space to A) and B) containers */
+  flex: 1; /* Give equal space to containers */
   display: flex;
-  justify-content: space-between; /* This will push the label to the left and the input to the right */
-  margin-right: 0.5rem; /* Adjust the right margin to match the gap between A) and B) */
+  justify-content: space-between; /* Label left and the input right */
+  margin-right: 0.5rem; /* Adjust the right margin to match the gap between containers */
 }
 
 .topLineQs .question-container:last-child, .bottomLineQs .question-container:last-child {
-  margin-right: 2rem; /* Remove right margin for the last container */
+  margin-right: 2rem; /* Reduce right margin for the last containers */
+  margin-left: 0; 
 }
 
 
@@ -247,9 +241,7 @@ input[type="text"], .logout-button, .questionSubmit {
 }
 
 #newQuestion input[type="text"] {
-  flex-grow: 1; /* Allow the input to grow and fill the space */
-  /* margin-left: same as your left input boxes; */
-  /* margin-right: same as your right input boxes; */
+  flex-grow: 1;
 }
 
 
@@ -267,19 +259,20 @@ input[type="text"] {
   min-width: none;
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  border-radius: 2vw;
   color: #000;
+  background-color: dimgray;
 }
 
 .questionSubmit {
   display: flex;
   justify-content: center;
   padding: 0.5rem 1rem;
-  background-color: #fff;
-  color: #000;
+  background-color: lightgray;
+  color:dimgray;
   border: none;
-  border-radius: 4px;
+  border-radius: 1.75vw;
   cursor: pointer;
   width: 6em;
   transition: background-color 0.3s;
@@ -342,7 +335,7 @@ input[type="text"] {
 <!-- QUESTION CONTAINER -->
     <div class="mainQuestionContainer">
 
-      <h2 class="add-questions">Add Questions</h2>
+      <h2 class="add-questions">ADD QUESTIONS</h2>
   
       <div class="question-container" id="newQuestion">
         <label for="questionNumber">New Question</label>
@@ -373,8 +366,7 @@ input[type="text"] {
         </div>
       </div>
 
-      <button class=questionSubmit on:click={submitQuestion}>Submit</button>
+      <button class=questionSubmit on:click={submitQuestion}>SUBMIT</button>
     </div>
-
   </div>
 </div>
