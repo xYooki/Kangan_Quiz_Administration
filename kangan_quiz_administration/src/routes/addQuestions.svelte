@@ -291,14 +291,11 @@ input[type="text"] {
 .questionSubmit:hover {
   background-color: #ffca1b;
   color: #fff;
-  
 }
 
 .questionSubmit:active {
   background-color: #000;
 }
-
-
 
 *, *::before, *::after {
   box-sizing: border-box;
