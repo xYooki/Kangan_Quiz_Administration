@@ -55,11 +55,6 @@ async function submitQuestion() {
 body {
   font-size: 1.6rem;  Default font-size is 16px now 
 }*/
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-}
 
 * {
   margin: 0;
@@ -72,7 +67,7 @@ html, body {
 /* Responsive font sizes */
 h2.add-questions {
   font-size: 2.4rem; /* Headings are 24px and scalable */
-  
+  margin: 2rem 0rem;
 }
 
 label {
@@ -154,7 +149,7 @@ input[type="text"], .logout-button, .questionSubmit {
   padding: 1vh 2vw;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-left: 2vw;
 }
 
@@ -208,51 +203,102 @@ input[type="text"], .logout-button, .questionSubmit {
   overflow-y: auto; /* adds scrollbar if content is too long */
 }
 
-.topLineQs, .bottomLineQs {
-  display: flex;
-  justify-content: space-between; /* This will space out the child elements evenly */
-  margin-bottom: 1rem; /* Adds some space between the two lines */
-}
-
 .question-container {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
 }
 
-label, .questionSubmit {
+.topLineQs, .bottomLineQs {
+  display: flex;
+  justify-content: flex-start; /* This will space out the child elements evenly */
+}
+
+.topLineQs .question-container, .bottomLineQs .question-container{
+  flex: 1; /* Give equal space to A) and B) containers */
+  display: flex;
+  justify-content: space-between; /* This will push the label to the left and the input to the right */
+  margin-right: 0.5rem; /* Adjust the right margin to match the gap between A) and B) */
+}
+
+.topLineQs .question-container:last-child, .bottomLineQs .question-container:last-child {
+  margin-right: 2rem; /* Remove right margin for the last container */
+}
+
+
+
+.topLineQs input[type="text"],
+.bottomLineQs input[type="text"] {
+  flex-grow: 1; /* Let the input grow to fill the container */
+  /* Do not set a fixed width here; let flexbox handle it */
+}
+
+.question-container label {
+  white-space: nowrap; /* Prevents the label from wrapping and ensures it stays on one line */
+  margin-right: 0.5rem; /* Space between label and input */
+}
+
+#newQuestion {
+  display: flex;
+  justify-content: space-between; /* Label to the left, input to the right */
+  align-items: center;
+}
+
+#newQuestion input[type="text"] {
+  flex-grow: 1; /* Allow the input to grow and fill the space */
+  /* margin-left: same as your left input boxes; */
+  /* margin-right: same as your right input boxes; */
+}
+
+
+label {
   font-size: 3vh;
+  text-align: right;
   margin-right: 0.5rem;
+  min-width: 7em;
+  white-space: nowrap; /* Prevents label text from wrapping */
 }
 
 input[type="text"] {
   flex-grow: 1; /* Allows input to take up as much space as possible */
   margin-left: 0.5rem; /* Adds space between label and input */
-  padding: 0.5rem;
+  min-width: none;
+  padding: 0.75rem;
   margin-bottom: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: #000;
 }
 
 .questionSubmit {
+  display: flex;
+  justify-content: center;
   padding: 0.5rem 1rem;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   border: none;
-  border-radius: 4px;  
+  border-radius: 4px;
   cursor: pointer;
-  width: 8em;
+  width: 6em;
   transition: background-color 0.3s;
+  margin-left: auto;
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .questionSubmit:hover {
-  background-color: #fff;
-  color: #000
+  background-color: #ffca1b;
+  color: #fff;
+  
 }
 
 .questionSubmit:active {
-  background-color: #ffca1b;
+  background-color: #000;
 }
+
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -301,10 +347,11 @@ input[type="text"] {
 
       <h2 class="add-questions">Add Questions</h2>
   
-      <div class="question-container">
-        <label for="questionNumber">{question}</label>
+      <div class="question-container" id="newQuestion">
+        <label for="questionNumber">New Question</label>
         <input type="text" id="questionNumber" bind:value={question} placeholder="Enter new question"/>
       </div>
+
       <div class="topLineQs">
         <div class="question-container">
           <label for="correctAnswerA">A)</label>
