@@ -13,13 +13,12 @@
     link.rel = 'stylesheet';
     document.head.appendChild(link);
   });
-
+// console.log(`https://kanganquizapi1.azurewebsites.net/users/${username}`);
   async function loginHandler(username) {
   try {
-    console.log(`https://kanganquizapi1.azurewebsites.net/users/${username}`);
-    const response = await fetch(`https://kanganquizapi1.azurewebsites.net/users/${username}`, {
+     const response = await fetch(`https://kanganquizapi1.azurewebsites.net/users/${username}`, {
       method: 'GET',
-      mode: 'no-cors'
+      mode: 'cors'
     });
 
     if (response.ok) {
@@ -37,9 +36,6 @@
     loginStatus = "An error occurred";
   }
 }
-
-
-
 </script>
 
  
@@ -101,7 +97,7 @@
   }
 
   .logo {
-    margin-right: -90%; 
+    margin-right: -10%; 
     width: 500px;  
     height: auto;
   }
