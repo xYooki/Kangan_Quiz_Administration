@@ -14,33 +14,34 @@
     document.head.appendChild(link);
   });
 
-  async function loginHandler() {
-    try {
-      const response = await fetch("https://kanganquizapi1.azurewebsites.net/users/{username}", { //api link goes hereee whenever its ready
-        method: "GET", // Or "GET" depending on your API endpoint
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username }),
-      });
+  async function loginHandler(username) {
+  try {
+    console.log(`https://kanganquizapi1.azurewebsites.net/users/${username}`);
+    const response = await fetch(`https://kanganquizapi1.azurewebsites.net/users/${username}`, {
+      method: 'GET',
+      mode: 'no-cors'
+    });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          loginStatus = "Login successful";
-          dispatch('loginEvent', { login: true });
-        } else {
-          loginStatus = "Login failed";
-        }
+    if (response.ok) {
+      const data = await response.json();
+      if (data === true) { 
+        goto('quizmanager');
       } else {
         loginStatus = "Login failed";
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
-      loginStatus = "An error occurred";
+    } else {
+      loginStatus = "Login failed";
     }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    loginStatus = "An error occurred";
   }
+}
+
+
+
 </script>
+
  
 <style>
   html, body {
@@ -142,7 +143,7 @@
 
 <img class="background-image" src="Kangan_Background.png" alt="Background Image" />
 
-<div class="container">
+<div class="container">0
   <div class="left-content">
     <img class="logo" src="White_Kangan_Logo.png" alt="Logo" />
     <!-- Your background image content -->
@@ -157,7 +158,7 @@
       <div class="input-field">
         <input type="text" id="username" name="username" placeholder="Enter your username" class="rounded-input">
       </div>
-      <button class="loginHandler" on:click={(e) => loginHandler(true)}>LOG IN</button>
-    </div>
+  <button class="loginHandler" on:click={() => loginHandler(document.getElementById('username').value)}>LOG IN</button>
+  </div>
   </div>
 </div>
