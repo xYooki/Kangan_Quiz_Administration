@@ -1,10 +1,6 @@
 <script>
   export let username;
-  function handleLogout() {
-    username = null; 
-  }
-
- let questions = [];
+  let questions = [];
 
  async function fetchQuestions() {
     try {
@@ -225,7 +221,6 @@
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
   <span>ADMIN: {username}</span>
-    <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
 </div>
 
 

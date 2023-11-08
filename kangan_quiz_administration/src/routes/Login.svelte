@@ -26,7 +26,8 @@
     if (response.ok) {
       const data = await response.json();
       if (data === true) { 
-        dispatch('loginMessage' , { result: true });
+        dispatch('loginMessage' ,  { result: true, user:username });
+
       } else {
         loginStatus = "Login failed";
       }
@@ -99,7 +100,7 @@
   }
 
   .logo {
-    margin-right: -10%; 
+    margin-right: -90%; 
     width: 500px;  
     height: auto;
   }
