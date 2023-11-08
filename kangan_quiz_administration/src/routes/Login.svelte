@@ -1,10 +1,12 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { onMount } from 'svelte';
+    import QuizManager from "./QuizManager.svelte";
 
   let dispatch = createEventDispatcher();
   let username = "";
   let loginStatus = "";
+  
 
   // Load the Roboto font on component mount
   onMount(() => {
@@ -24,7 +26,7 @@
     if (response.ok) {
       const data = await response.json();
       if (data === true) { 
-        goto('quizmanager');
+        dispatch('loginMessage' , { result: true });
       } else {
         loginStatus = "Login failed";
       }

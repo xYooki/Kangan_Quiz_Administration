@@ -4,17 +4,22 @@
     user = null;  
  }
 
+ let questions = [];
+
  async function fetchQuestions() {
     try {
-      const response = await fetch("https://kanganquizapi1/users.azurewebsites.net/questions");
+      const response = await fetch("https://kanganquizapi1.azurewebsites.net/questions");
       if (response.ok) {
         questions = await response.json();
+        console.log(questions);
       } else {
         console.error("Failed to fetch questions");
       }
     } catch (error) {
       console.error("An error occurred:", error);
     }
+
+    
   }
   import { onMount } from "svelte";
   onMount(fetchQuestions);
@@ -246,7 +251,7 @@
     <div class="question-container">
       <div class="question-text">
         <!-- Display the question content here -->
-        Q.{index + 1} {question.text}
+        Q.{index + 1} {question.question}
       </div>
       <div class="buttons">
         <button class="delete-button">DELETE</button>
