@@ -1,8 +1,8 @@
 <script>
-  export let username; // Receive the username as a prop
- function handleLogout() {
-    user = null;  
- }
+  export let username;
+  function handleLogout() {
+    username = null; 
+  }
 
  let questions = [];
 
@@ -23,7 +23,6 @@
   import { onMount } from "svelte";
   onMount(fetchQuestions);
 
- 
 </script>
 
 <style>
@@ -202,6 +201,12 @@
   color:#ffffff; 
   }
 
+  /* Add this to your stylesheet */
+.scroll-container {
+  max-height: 900px;  
+  overflow-y: auto;  
+}
+
   </style>
   
   <!-- LOGO MANAGEMENT -->
@@ -220,9 +225,7 @@
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
   <span>ADMIN: {username}</span>
-  <a href="https://kanganquizadministration.netlify.app">  
     <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
-  </a>
 </div>
 
 
@@ -241,34 +244,36 @@
   <div class="additional-content"> </div>
 
    <!--QUESTIONS LIST CONTAINER-->
+<!--QUESTIONS LIST CONTAINER-->
 <div class="container">
   <div class="manage-questions">
     <h>MANAGE QUESTIONS</h>
   </div>
 
-  {#each questions as question, index (question.id)}
-  <div class="question-container">
-    <div class="question-text">
-      <!-- Display the question content here -->
-      Q.{index + 1} {question.question}
-    </div>
-    <div class="correct-answer">
-      <!-- Display the correct answer -->
-      Correct Answer: {question.options[3]}
-    </div>
-    <div class="buttons">
-      <button class="delete-button">DELETE</button>
-      <button class="edit-button">EDIT</button>
-    </div>
+  <div class="scroll-container">
+    {#each questions as question, index (question.id)}
+      <div class="question-container">
+        <div class="question-text">
+          Q.{index + 1} {question.question}
+        </div>
+        <div class="correct-answer">
+          Correct Answer: {question.options[3]}
+        </div>
+        <div class="buttons">
+          <button class="delete-button">DELETE</button>
+          <button class="edit-button">EDIT</button>
+        </div>
+      </div>
+    {/each}
   </div>
-{/each}
+</div>
+
 
 
   <!-- Add new question button -->
   <div class="add-button">
     <button class="sticky-add-button">ADD</button>
   </div>
-</div>
   
           <div class="add-button">
       <button class="sticky-add-button">ADD</button>
