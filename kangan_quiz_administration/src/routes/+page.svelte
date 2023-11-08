@@ -2,7 +2,7 @@
   import Login from "./Login.svelte";
   import QuizManager from "./QuizManager.svelte";
   let login = false;
-  let nav = "quizManager";
+  let nav = "login";
 
   function setLogin(event) {
     console.log(event.detail);
