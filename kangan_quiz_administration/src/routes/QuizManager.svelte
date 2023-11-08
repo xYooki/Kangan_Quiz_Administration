@@ -164,7 +164,7 @@
   background: transparent; 
   margin-right: -93em;
   margin-left: 80em;
-  margin-top: -3em;
+  margin-top: -4em;
 }
 
 .delete-button::before,
@@ -247,18 +247,23 @@
     <h>MANAGE QUESTIONS</h>
   </div>
 
-  {#each questions as question, index (question.id)} <!-- Each question in the database SHOULD have a unique ID -->
-    <div class="question-container">
-      <div class="question-text">
-        <!-- Display the question content here -->
-        Q.{index + 1} {question.question}
-      </div>
-      <div class="buttons">
-        <button class="delete-button">DELETE</button>
-        <button class="edit-button">EDIT</button>
-      </div>
+  {#each questions as question, index (question.id)}
+  <div class="question-container">
+    <div class="question-text">
+      <!-- Display the question content here -->
+      Q.{index + 1} {question.question}
     </div>
-  {/each}
+    <div class="correct-answer">
+      <!-- Display the correct answer -->
+      Correct Answer: {question.options[3]}
+    </div>
+    <div class="buttons">
+      <button class="delete-button">DELETE</button>
+      <button class="edit-button">EDIT</button>
+    </div>
+  </div>
+{/each}
+
 
   <!-- Add new question button -->
   <div class="add-button">
