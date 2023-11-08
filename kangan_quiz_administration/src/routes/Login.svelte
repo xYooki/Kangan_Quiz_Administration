@@ -141,7 +141,7 @@
 
 <img class="background-image" src="Kangan_Background.png" alt="Background Image" />
 
-<div class="container">0
+<div class="container">
   <div class="left-content">
     <img class="logo" src="White_Kangan_Logo.png" alt="Logo" />
     <!-- Your background image content -->
