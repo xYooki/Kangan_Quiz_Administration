@@ -1,5 +1,5 @@
 <script>
- let user= "Admin_01"
+ let user= {username}
  function handleLogout() {
     user = null;  
  }
@@ -221,7 +221,7 @@
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
   <span>ADMIN: {user}</span>
-  <a href="http://localhost:5173">  
+  <a href="https://kanganquizadministration.netlify.app">  
     <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
   </a>
 </div>
