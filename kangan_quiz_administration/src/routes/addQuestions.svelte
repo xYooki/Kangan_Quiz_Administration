@@ -7,10 +7,10 @@ function handleLogout() {
 }
 
 let question = "";
-let correctAnswerA = "";
-let answerB = "";
-let answerC = "";
-let answerD = "";
+let correctOption1 = "";
+let option2 = "";
+let option3 = "";
+let option4 = "";
 
 
 async function submitQuestion() {
@@ -20,7 +20,7 @@ async function submitQuestion() {
     const response = await fetch('https://kanganquizapi1/users.azurewebsites.net/questions', {
       method: 'POST',
       body: JSON.stringify({
-        question, correctAnswerA, answerB, answerC, answerD
+        question, correctOption1, option2, option3, option4
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -31,10 +31,10 @@ async function submitQuestion() {
     if (response.ok) {
       //Reset form values after successful submission
       question = '';
-      correctAnswerA = '';
-      answerB = '';
-      answerC = '';
-      answerD = '';
+      correctOption1 = '';
+      option2 = '';
+      option3 = '';
+      option4 = '';
       // @ts-ignore
       alert('Question submitted successfully!');
     } else {
@@ -344,25 +344,25 @@ input[type="text"] {
 
       <div class="topLineQs">
         <div class="question-container">
-          <label for="correctAnswerA">A)</label>
-          <input type="text" id="correctAnswerA" bind:value={correctAnswerA} placeholder="Enter correct answer here"/>
+          <label for="correctOption1">A)</label>
+          <input type="text" id="correctOption1" bind:value={correctOption1} placeholder="Enter correct answer here"/>
         </div>
 
         <div class="question-container">
-          <label for="answerB">B)</label>
-          <input type="text" id="answerB" bind:value={answerB} placeholder="Enter text"/>
+          <label for="option2">B)</label>
+          <input type="text" id="option2" bind:value={option2} placeholder="Enter text"/>
         </div>
       </div>
 
       <div class="bottomLineQs">
         <div class="question-container">
-          <label for="answerC">C)</label>
-          <input type="text" id="answerC" bind:value={answerC} placeholder="Enter text"/>
+          <label for="option3">C)</label>
+          <input type="text" id="option3" bind:value={option3} placeholder="Enter text"/>
         </div>
 
         <div class="question-container">
-          <label for="answerD">D)</label>
-          <input type="text" id="answerD" bind:value={answerD} placeholder="Enter text"/>
+          <label for="option4">D)</label>
+          <input type="text" id="option4" bind:value={option4} placeholder="Enter text"/>
         </div>
       </div>
 
