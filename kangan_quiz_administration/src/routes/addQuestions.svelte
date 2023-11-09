@@ -1,10 +1,9 @@
-<script>
-
-export let username;
+<script lang="ts">
+export let username: string = '';
 
 function handleLogout() {
-    // @ts-ignore
-    username = null;  
+  // @ts-ignore
+  username = null;  
 }
 
 let question = "";
