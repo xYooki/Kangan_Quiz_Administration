@@ -1,31 +1,23 @@
 <script>
+  export let username;
+  let questions = [];
 
-let user= "Admin_01"
-function handleLogout() {
-  // @ts-ignore
-  user = null;  
-}
-
-async function fetchQuestions() {
-  try {
-    const response = await fetch("https://kanganquizapi1/users.azurewebsites.net/questions");
-    if (response.ok) {
-      questions = await response.json();
-    } else {
-      console.error("Failed to fetch questions");
+ async function fetchQuestions() {
+    try {
+      const response = await fetch("https://kanganquizapi1.azurewebsites.net/questions");
+      if (response.ok) {
+        questions = await response.json();
+        console.log(questions);
+      } else {
+        console.error("Failed to fetch questions");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
-  } catch (error) {
-    console.error("An error occurred:", error);
+
   }
-}
-import { onMount } from "svelte";
-onMount(fetchQuestions);
-
-import { goto } from '$app/navigation';
-
-function openAddQuestions() {
-  goto('/addQuestions');
-}
+  import { onMount } from "svelte";
+  onMount(fetchQuestions);
 
 </script>
 
@@ -166,7 +158,7 @@ function openAddQuestions() {
   background: transparent; 
   margin-right: -93em;
   margin-left: 80em;
-  margin-top: -3em;
+  margin-top: -4em;
 }
 
 .delete-button::before,
@@ -205,6 +197,12 @@ function openAddQuestions() {
   color:#ffffff; 
   }
 
+  /* Add this to your stylesheet */
+.scroll-container {
+  max-height: 900px;  
+  overflow-y: auto;  
+}
+
   </style>
   
   <!-- LOGO MANAGEMENT -->
@@ -222,10 +220,7 @@ function openAddQuestions() {
 
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
-  <span>ADMIN: {user}</span>
-  <a href="http://localhost:5173">  
-    <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
-  </a>
+  <span>ADMIN: {username}</span>
 </div>
 
 
@@ -244,6 +239,7 @@ function openAddQuestions() {
   <div class="additional-content"> </div>
 
    <!--QUESTIONS LIST CONTAINER-->
+<!--QUESTIONS LIST CONTAINER-->
 <div class="container">
   <div class="manage-questions">
     <h>MANAGE QUESTIONS</h>
@@ -262,12 +258,10 @@ function openAddQuestions() {
     </div>
   {/each}
 
-  
-  <!-- Add new question button-->
+  <!-- Add new question button -->
   <div class="add-button">
     <button class="sticky-add-button">ADD</button>
   </div>
-
   
 <!-- Add new question button Cate's version -->
   <button class="add-button" on:click={openAddQuestions}>Add Questions</button>

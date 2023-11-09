@@ -17,6 +17,20 @@
   }
 </script>
 
+<style>
+/*LOG OUT BUTTON*/
+.logout-button {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffca1b;  
+    color: #333;
+    padding: 2px 10px;
+    cursor: pointer;
+    border: none;
+    width: 100%; 
+    height: 100%;
+  }
+</style>
+
 {#if view === 'addQuestions'}
   <AddQuestions />
 {:else if view === 'login'}
