@@ -263,8 +263,8 @@
     <button class="sticky-add-button">ADD</button>
   </div>
   
-<!-- Add new question button Cate's version -->
-  <button class="add-button" on:click={openAddQuestions}>Add Questions</button>
+<!-- Add new question button Cate's version
+  <button class="add-button" on:click={openAddQuestions}>Add Questions</button> -->
 
 </div>
 

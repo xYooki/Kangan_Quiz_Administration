@@ -1,7 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { onMount } from 'svelte';
-    import QuizManager from "./QuizManager.svelte";
+  import QuizManager from "./QuizManager.svelte";
+  import AddQuestion from './AddQuestion.svelte';
 
   let dispatch = createEventDispatcher();
   let username = "";

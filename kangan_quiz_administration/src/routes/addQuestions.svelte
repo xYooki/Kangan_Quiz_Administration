@@ -1,9 +1,10 @@
 <script>
-let user= "Admin_01"
+
+export let username;
 
 function handleLogout() {
     // @ts-ignore
-    user = null;  
+    username = null;  
 }
 
 let question = "";
@@ -314,7 +315,7 @@ input[type="text"] {
     <!-- USERNAME AND LOGOUT BUTTON -->
     <div class="bottom-bar">
       <div class="bottom-bar-right">
-        <span class="user-info">ADMIN: {user}</span>
+        <span class="user-info">ADMIN: {username}</span>
         <a href="http://localhost:5173">
           <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
         </a>
