@@ -1,7 +1,7 @@
 <script>
   import Login from "./Login.svelte";
   import QuizManager from "./QuizManager.svelte";
-  import AddQuestions from './addQuestions.svelte';
+  import addQuestions from './addQuestions.svelte';
   let login = false;
   let view = 'addQuestions'; // possible values: 'Login', 'QuizManager', 'addQuestions'
 
@@ -12,7 +12,7 @@
     if (login) view = 'QuizManager';
   }
 
-  function showAddQuestions() {
+  function showaddQuestions() {
     view = 'addQuestions';
   }
 </script>
@@ -32,11 +32,12 @@
 </style>
 
 {#if view === 'addQuestions'}
-  <AddQuestions />
+  <!-- svelte-ignore component-name-lowercase -->
+  <addQuestions />
 {:else if view === 'login'}
   <Login on:loginEvent={setLogin} />
 {:else}
-  <QuizManager on:addQuestions={showAddQuestions} />
+  <QuizManager on:addQuestions={showaddQuestions} />
 {/if}
 
   
