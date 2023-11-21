@@ -1,32 +1,20 @@
 <script>
   import Login from "./Login.svelte";
   import QuizManager from "./QuizManager.svelte";
+  import addQuestions from './addQuestions.svelte';
   let login = false;
-  let nav = "login";
-  let username ="";
+  let view = 'addQuestions'; // possible values: 'Login', 'QuizManager', 'addQuestions'
 
-  function handleLogout() {
-    // username = null;
-    nav = 'login';
-  }
-
+  // @ts-ignore
   function setLogin(event) {
     console.log(event.detail);
     login = event.detail.login;
+    if (login) view = 'QuizManager';
   }
 
-  function loginMessageHandler(event) {
-    if(event.detail.result) {
-      nav = 'quizManager';
-      username = event.detail.user;
-      console.log(nav);
-      return;
-    }
-
-    nav = 'login';
-
+  function showaddQuestions() {
+    view = 'addQuestions';
   }
-
 </script>
 
 <style>
@@ -43,13 +31,13 @@
   }
 </style>
 
-<div>
-  {#if nav == 'login'}
-   <Login on:loginEvent={setLogin} on:loginMessage={loginMessageHandler} />
-  {:else if nav == 'quizManager'}
-  <button class="logout-button" on:click={handleLogout}>LOG OUT</button>
-  <QuizManager username = {username}/>
-  {/if}
-</div>
+{#if view === 'addQuestions'}
+  <!-- svelte-ignore component-name-lowercase -->
+  <addQuestions />
+{:else if view === 'login'}
+  <Login on:loginEvent={setLogin} />
+{:else}
+  <QuizManager on:addQuestions={showaddQuestions} />
+{/if}
 
   

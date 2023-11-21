@@ -206,17 +206,17 @@
   </style>
   
   <!-- LOGO MANAGEMENT -->
-  <div class="top-bar">
-    <div>
-      <a href="https://www.kangan.edu.au/"> 
-        <img src="Kangan_logo.png" alt="Kangan Logo" class="logo" />
-      </a>
-      <a href="https://youtu.be/oKqQCHNWP-o?si=Ub7fefgNyd2YAEah">  
-        <img src="Tafe_Logo.png" alt="Tafe Vic Logo" class="logo" />
-      </a>
-    </div>
+<div class="top-bar">
+  <div>
+    <a href="https://www.kangan.edu.au/"> 
+      <img src="Kangan_logo.png" alt="Kangan Logo" class="logo" />
+    </a>
+    <a href="https://youtu.be/oKqQCHNWP-o?si=Ub7fefgNyd2YAEah">  
+      <img src="Tafe_Logo.png" alt="Tafe Vic Logo" class="logo" />
+    </a>
   </div>
-  
+</div>
+
 
   <!-- THE TEXT THAT TELLS YOU WHO YOURE LOGGED IN AS AND LOGS YOU OUT -->
 <div class="bottom-bar">
@@ -245,35 +245,28 @@
     <h>MANAGE QUESTIONS</h>
   </div>
 
-  <div class="scroll-container">
-    {#each questions as question, index (question.id)}
-      <div class="question-container">
-        <div class="question-text">
-          Q.{index + 1} {question.question}
-        </div>
-        <div class="correct-answer">
-          Correct Answer: {question.options[3]}
-        </div>
-        <div class="buttons">
-          <button class="delete-button">DELETE</button>
-          <button class="edit-button">EDIT</button>
-        </div>
+  {#each questions as question, index (question.id)} <!-- Each question in the database SHOULD have a unique ID -->
+    <div class="question-container">
+      <div class="question-text">
+        <!-- Display the question content here -->
+        Q.{index + 1} {question.text}
       </div>
-    {/each}
-  </div>
-</div>
-
-
+      <div class="buttons">
+        <button class="delete-button">DELETE</button>
+        <button class="edit-button">EDIT</button>
+      </div>
+    </div>
+  {/each}
 
   <!-- Add new question button -->
   <div class="add-button">
     <button class="sticky-add-button">ADD</button>
   </div>
   
-          <div class="add-button">
-      <button class="sticky-add-button">ADD</button>
-    </div>
-  
+<!-- Add new question button Cate's version
+  <button class="add-button" on:click={openAddQuestions}>Add Questions</button> -->
+
+</div>
 
 
  
